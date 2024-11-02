@@ -51,9 +51,7 @@ class Attribute {
         this.index = -1;
     }
 }
-/**
- * Generate a object to this class and call function train
- */
+
 class DecisionTreeID3 {
     constructor(_dataSet = []) {
         this.dataset = _dataSet
@@ -91,15 +89,10 @@ class DecisionTreeID3 {
      * @returns {NodeTree}
      */
     train(_dataset, _start = 0){
-        // We going to train the algorithm
-        // First we going to calculate entropy of data set
+       
         let columnResult = _dataset[0].length - 1;
         this.calculateGeneralEntropy(_dataset, columnResult);
-
-        /**
-         * Second we going to classifier every feature and calculate the entropy of every feature inside of data set
-         * This process is realized for every Attribute
-         * */
+       
         let numberAttributes = _dataset[0].length;
         let gainAttribute = []
         for (let i = _start ; i< numberAttributes; i++){
@@ -114,14 +107,10 @@ class DecisionTreeID3 {
         if(gainAttribute.length == 0){
             return null;
         }
-        /**
-         * Third we going to select the best attribute
-         */
+        
         let selectedGain = this.selectBestFeature(gainAttribute);
         
-        /**
-         * We going to create a node with the best attribute selected
-         */
+        
         
         let parentNode = new NodeTree(gainAttribute[selectedGain].attribute);
         gainAttribute[selectedGain].features.map(feat => {

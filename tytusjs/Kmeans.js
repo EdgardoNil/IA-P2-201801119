@@ -11,17 +11,12 @@ class LinearKMeans extends KMeans {
     }
 
     clusterize(k, data, iterations) {
-        //console.log(iterations)
         let clusters_proposals = []
         this.data = data
-        //console.log(k, data)
 
         for (let i = 0; i < iterations; i++) {
             let clusters = []
 
-
-            //pendiente agregar iterations
-            //let copy_data = [...this.data]
             for (let i = 0; i < k; i++) {
                 let c = data[Math.floor(Math.random() * data.length)]
                 while (clusters.findIndex(x => x === c) != -1) {
@@ -81,9 +76,6 @@ class LinearKMeans extends KMeans {
                     total_variance = 0
                 }
 
-
-                // Recalcular distancias y agrupaciones
-
                 distances = []
                 clustered_data = []
                 closer_cluster = 0, closer_distance = 0, first_distance = true;
@@ -111,18 +103,11 @@ class LinearKMeans extends KMeans {
 
                 });
 
-                //console.log(clusters)
-                //console.table(clustered_data)
             } while (JSON.stringify(previous_cluster_stats) != JSON.stringify(cluster_stats))
             clusters_proposals.push([total_variance, clusters, clustered_data])
         }
 
-        // Posibles clusters
-        // console.log(clusters_proposals)
-
         clusters_proposals.sort(function (a, b) { return (a[0] > b[0]) ? 1 : ((b[0] > a[0]) ? -1 : 0); })
-        //console.table(distances)
-
 
         return clusters_proposals[0][2]
 
@@ -176,9 +161,6 @@ class _2DKMeans extends KMeans {
         for (let i = 0; i < iterations; i++) {
             let clusters = []
 
-
-            //pendiente agregar iterations
-            //let copy_data = [...this.data]
             for (let i = 0; i < k; i++) {
                 let c = data[Math.floor(Math.random() * data.length)]
                 while (clusters.findIndex(x => x === c) != -1) {
@@ -187,13 +169,6 @@ class _2DKMeans extends KMeans {
                 clusters.push(c)
             }
 
-            //            clusters = clusters.sort(function (a, b) { return (a > b) ? 1 : ((b > a) ? -1 : 0); })
-            // console.log('Clusters: ', clusters)
-
-
-
-
-            //distancias [punto,cluster,distancia]
             let distances = []
             let clustered_data = []
             let closer_cluster = [], closer_distance = 0, first_distance = true;
@@ -221,11 +196,6 @@ class _2DKMeans extends KMeans {
                 clustered_data.push([point, closer_cluster, closer_distance])
             });
 
-            //console.log(clustered_data)
-
-
-
-            //calcular medias y varianza
 
             let previous_cluster_stats = []
             let total_variance = 0
@@ -235,7 +205,6 @@ class _2DKMeans extends KMeans {
                 previous_cluster_stats = cluster_stats
                 cluster_stats = []
                 total_variance = 0
-                // [mean,variance]
                 clusters.forEach((c, i) => {
                     let data = clustered_data.filter((cd) => JSON.stringify(cd[1]) == JSON.stringify(c))
                     let data_points = data.map((dp) => dp[0])
@@ -247,12 +216,6 @@ class _2DKMeans extends KMeans {
                 if (Number.isNaN(total_variance)) {
                     total_variance = 0
                 }
-
-                //console.log(cluster_stats)
-                //console.log(clusters)
-
-
-                // Recalcular distancias y agrupaciones
 
                 distances = []
                 clustered_data = []
@@ -281,15 +244,11 @@ class _2DKMeans extends KMeans {
 
                 });
 
-                //console.log(clusters)
-                //console.table(clustered_data)
+
                 limit++
             } while ((JSON.stringify(previous_cluster_stats) != JSON.stringify(cluster_stats)) && limit < iterations)
             clusters_proposals.push([total_variance, clusters, clustered_data])
         }
-
-        // Posibles clusters
-        // console.log(clusters_proposals)
 
         clusters_proposals.sort(function (a, b) { return (a[0] > b[0]) ? 1 : ((b[0] > a[0]) ? -1 : 0); })
         //console.table(distances)
@@ -334,6 +293,5 @@ class _2DKMeans extends KMeans {
 
         return [res.mean, res.variance]
     }
-
 
 }

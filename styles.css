@@ -1,0 +1,264 @@
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #1a1a1a; /* Fondo oscuro */
+  color: #e0e0e0; /* Color de texto claro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5em; /* Tamaño de fuente aumentado para impacto */
+  font-weight: 700; /* Mayor peso para mejor visibilidad */
+  color: #ffffff; /* Color blanco para el título */
+  text-align: center;
+  margin: 40px 0;
+  letter-spacing: 1px;
+}
+
+/* Contenedores de secciones */
+#selector-container, .model-section {
+  max-width: 1000px;
+  width: 100%;
+  padding: 30px;
+  background-color: #2c2c2c; /* Fondo gris oscuro */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 20px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#selector-container:hover, .model-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Sombra más intensa al pasar el mouse */
+}
+
+.model-section h2 {
+  font-size: 1.8em;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff; /* Título en blanco para contraste */
+  border-bottom: 2px solid #4f4f4f; /* Línea de separación en gris más claro */
+  padding-bottom: 10px;
+}
+
+/* Contenedores de elementos interactivos */
+#controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Espacio entre controles */
+  margin-top: 20px;
+}
+
+/* Input de archivo */
+input[type="file"] {
+  padding: 12px 20px;
+  font-size: 1em; 
+  color: #ffffff; /* Texto blanco */
+  background-color: #3c3c3c; /* Fondo oscuro para el input */
+  border: 2px solid #555; /* Borde gris */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease; 
+  width: 100%;
+  max-width: 300px; 
+}
+
+/* Efecto hover para el input de archivo */
+input[type="file"]:hover {
+  border-color: #ffffff; /* Borde blanco al pasar el mouse */
+  background-color: #444; /* Fondo más claro al pasar el mouse */
+}
+
+/* Efecto foco para el input de archivo */
+input[type="file"]:focus {
+  outline: none;
+  border-color: #ffffff; /* Borde blanco al enfocar */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Botones estilizados */
+.button {
+  padding: 12px 18px;
+  font-size: 1em;
+  font-weight: 600; /* Fuente más fuerte */
+  color: #ffffff; /* Texto en blanco */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Efecto de sombra */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 5px;
+}
+
+/* Estilo para botón primario */
+.button-primary {
+  background: linear-gradient(135deg, #ff4757, #ff6b81); /* Rojo vibrante */
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.button-primary:hover {
+  background: linear-gradient(135deg, #e84118, #ff4757); /* Cambio de color en hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+}
+
+/* Estilo para botón secundario */
+.button-secondary {
+  background: linear-gradient(135deg, #1dd1a1, #4cd137); /* Verde vibrante */
+  box-shadow: 0 5px 15px rgba(29, 209, 161, 0.3);
+}
+
+.button-secondary:hover {
+  background: linear-gradient(135deg, #10ac84, #1dd1a1); /* Cambio de color en hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(29, 209, 161, 0.4);
+}
+
+/* Estilo para botón terciario */
+.button-tertiary {
+  background: linear-gradient(135deg, #ffcc00, #ffb700); /* Amarillo vibrante */
+  box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+}
+
+.button-tertiary:hover {
+  background: linear-gradient(135deg, #ffb700, #ffcc00); /* Cambio de color en hover */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 204, 0, 0.4);
+}
+
+/* Resultados */
+#results-container {
+  background-color: #2c2c2c; /* Fondo gris oscuro */
+  border: 1px solid #555; /* Borde gris */
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+#results-container h3 {
+  font-size: 1.4em; /* Mayor tamaño para títulos */
+  color: #ffffff; /* Títulos en blanco */
+  margin-bottom: 12px;
+}
+
+#results-container p {
+  margin: 6px 0;
+  font-size: 1em;
+  color: #e0e0e0; /* Texto claro */
+  font-weight: bold;
+}
+
+/* Canvas */
+#canvas-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+canvas {
+  border: 1px solid #555; /* Borde gris oscuro */
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Dropdown estilizado */
+#model-selector {
+  font-size: 1em;
+  padding: 10px;
+  border: 2px solid #555; /* Borde gris oscuro */
+  border-radius: 8px;
+  background-color: #3c3c3c; /* Fondo oscuro */
+  color: #ffffff; /* Texto blanco */
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+#model-selector:hover {
+  border-color: #ffffff; /* Borde blanco al pasar el mouse */
+}
+
+/* Sección oculta inicialmente */
+.model-section {
+  display: none;
+}
+
+/* Transiciones para secciones visibles */
+.model-section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor y estilo de Canvas */
+#canvas-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 15px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+canvas {
+  width: 100%; 
+  max-width: 680px; 
+  height: auto; 
+  border: 1px solid #555; /* Borde gris oscuro */
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Efecto de desactivado para botones */
+.button:disabled {
+  background-color: #444; /* Fondo gris oscuro */
+  color: #888; /* Texto gris claro */
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Input de número estilizado */
+input[type="number"] {
+  padding: 12px 15px; 
+  font-size: 1em; 
+  color: #ffffff; /* Texto blanco */
+  background-color: #3c3c3c; /* Fondo oscuro */
+  border: 2px solid #555; /* Borde gris oscuro */
+  border-radius: 8px; 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; 
+  max-width: 300px; 
+}
+
+/* Efecto hover para el input de número */
+input[type="number"]:hover {
+  border-color: #ffffff; /* Borde blanco al pasar el mouse */
+}
+
+/* Efecto foco para el input de número */
+input[type="number"]:focus {
+  border-color: #ffffff; /* Borde blanco al enfocar */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+  outline: none; 
+}
